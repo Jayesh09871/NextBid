@@ -36,8 +36,8 @@ const About = () => {
           >
             About Us
           </h1>
-          <p className="text-xl text-stone-600">
-            Welcome to PrimeBid, the ultimate destination for online auctions
+          <p className="text-xl text-stone-300">
+            Welcome to NextBid, the ultimate destination for online auctions
             and bidding excitement. Founded in 2024, we are dedicated to
             providing a dynamic and user-friendly platform for buyers and
             sellers to connect, explore, and transact in a secure and seamless
@@ -46,12 +46,12 @@ const About = () => {
         </div>
         <div>
           <h3
-            className={`text-[#111] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl`}
+            className={`text-stone-300 text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl`}
           >
             Our Mission
           </h3>
-          <p className="text-xl text-stone-600">
-            At PrimeBid, our mission is to revolutionize the way people buy and
+          <p className="text-xl text-stone-300">
+            At NextBid, our mission is to revolutionize the way people buy and
             sell items online. We strive to create an engaging and trustworthy
             marketplace that empowers individuals and businesses to discover
             unique products, make informed decisions, and enjoy the thrill of
@@ -60,15 +60,15 @@ const About = () => {
         </div>
         <div>
           <h3
-            className={`text-[#111] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl`}
+            className={`text-stone-300 text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl`}
           >
             Our Values
           </h3>
           <ul className="list-inside">
             {values.map((element) => {
               return (
-                <li className="text-xl text-stone-600 mb-2" key={element.id}>
-                  <span className="text-black font-bold">{element.title}</span>:{" "}
+                <li className="text-xl text-stone-300 mb-2" key={element.id}>
+                  <span className="text-stone-300 font-bold">{element.title}</span>:{" "}
                   {element.description}
                 </li>
               );
@@ -77,12 +77,12 @@ const About = () => {
         </div>
         <div>
           <h3
-            className={`text-[#111] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl`}
+            className={`text-stone-300 text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl`}
           >
             Our Story
           </h3>
-          <p className="text-xl text-stone-600">
-             PrimeBid was born out of a passion for
+          <p className="text-xl text-stone-300">
+             NextBid was born out of a passion for
             connecting people with unique and valuable items. With years of
             experience in the auction industry, our team is committed to
             creating a platform that offers an unparalleled auction experience
@@ -91,12 +91,12 @@ const About = () => {
         </div>
         <div>
           <h3
-            className={`text-[#111] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl`}
+            className={`text-stone-300 text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl`}
           >
             Join Us
           </h3>
-          <p className="text-xl text-stone-600">
-            Whether you're looking to buy, sell, or simply explore, PrimeBid
+          <p className="text-xl text-stone-300">
+            Whether you're looking to buy, sell, or simply explore, NextBid
             invites you to join our growing community of auction enthusiasts.
             Discover new opportunities, uncover hidden gems, and experience the
             thrill of winning your next great find.
@@ -104,7 +104,7 @@ const About = () => {
         </div>
         <div>
           <p className="text-[#d6482b] text-xl font-bold mb-3">
-            Thank you for choosing PrimeBid. We look forward to being a part of
+            Thank you for choosing NextBid. We look forward to being a part of
             your auction journey!
           </p>
         </div>
