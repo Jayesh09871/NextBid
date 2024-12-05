@@ -1,5 +1,5 @@
 import Spinner from "@/custom-components/Spinner";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const UserProfile = () => {
   }, [isAuthenticated]);
   return (
     <>
-      <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[320px] flex flex-col min-h-screen py-4 justify-start">
+      <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[80px] flex flex-col min-h-screen py-4 justify-start">
         {loading ? (
           <Spinner />
         ) : (

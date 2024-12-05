@@ -1,6 +1,6 @@
 import Spinner from "@/custom-components/Spinner";
 import { getAuctionDetail } from "@/store/slices/auctionSlice";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FaGreaterThan } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -26,7 +26,7 @@ const ViewAuctionDetails = () => {
 
   return (
     <>
-      <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[320px] flex flex-col">
+      <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[80px] flex flex-col">
         <div className="text-[16px] flex flex-wrap gap-2 items-center">
           <Link
             to="/"

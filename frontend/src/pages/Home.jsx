@@ -1,10 +1,8 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import FeaturedAuctions from "./home-sub-components/FeaturedAuctions";
-import UpcomingAuctions from "./home-sub-components/UpcomingAuctions";
 import Leaderboard from "./home-sub-components/Leaderboard";
-import Spinner from "@/custom-components/Spinner";
+import UpcomingAuctions from "./home-sub-components/UpcomingAuctions";
 
 const Home = () => {
   const howItWorks = [
@@ -23,7 +21,7 @@ const Home = () => {
   const { isAuthenticated } = useSelector((state) => state.user);
   return (
     <>
-      <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[320px] flex flex-col min-h-screen py-4 justify-center">
+      <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[80px] flex flex-col min-h-screen py-4 justify-center">
         <div>
          
           <h1

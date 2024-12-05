@@ -1,9 +1,9 @@
 import { createAuction } from "@/store/slices/auctionSlice";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "react-datepicker/dist/react-datepicker.css";
 
 const CreateAuction = () => {
   const [image, setImage] = useState("");
@@ -65,7 +65,7 @@ const CreateAuction = () => {
   }, [isAuthenticated]);
 
   return (
-    <article className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[320px] flex flex-col">
+    <article className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[80px] flex flex-col">
       <h1
         className={`text-[#d6482b] text-2xl font-bold mb-2 min-[480px]:text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl`}
       >

@@ -1,7 +1,7 @@
 import { postCommissionProof } from "@/store/slices/commissionSlice";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const SubmitCommission = () => {
   const [proof, setProof] = useState("");
@@ -27,7 +27,7 @@ const SubmitCommission = () => {
 
   return (
     <>
-      <section className="w-full h-fit px-5 pt-20 lg:pl-[320px] flex flex-col min-h-screen py-4 justify-start bg-black text-white">
+      <section className="w-full h-fit px-5 pt-20 lg:pl-[80px] flex flex-col min-h-screen py-4 justify-start bg-black text-white">
         <motion.div
           className="bg-[#1a1a1a] mx-auto w-full h-auto px-6 flex flex-col gap-6 items-center py-8 justify-center rounded-md shadow-lg"
           initial={{ opacity: 0, y: -20 }}

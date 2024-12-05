@@ -1,9 +1,9 @@
 import { login } from "@/store/slices/userSlice";
-import React, { useEffect, useState } from "react";
+import { motion } from 'framer-motion';
+import { Lock, Mail } from 'lucide-react';
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Mail, Lock } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -30,7 +30,7 @@ const Login = () => {
 
   return (
     <>
-      <section className="w-full h-fit px-5 pt-20 lg:pl-[320px] flex flex-col min-h-screen py-4 justify-center bg-black text-white">
+      <section className="w-full h-fit px-5 pt-20 lg:pl-[80px] flex flex-col min-h-screen py-4 justify-center bg-black text-white">
         <motion.div
           className="bg-[#1a1a1a] mx-auto w-full h-auto px-6 flex flex-col gap-6 items-center py-8 justify-center rounded-md shadow-lg"
           initial={{ opacity: 0, y: -20 }}
