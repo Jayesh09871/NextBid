@@ -39,43 +39,43 @@ const AuctionItem = () => {
         <div className="text-[16px] flex flex-wrap gap-2 items-center">
           <Link
             to="/"
-            className="font-semibold transition-all duration-300 hover:text-[#D6482B]"
+            className="font-semibold transition-all text-neutral-400 duration-300 hover:text-[#D6482B]"
           >
             Home
           </Link>
-          <FaGreaterThan className="text-stone-400" />
+          <FaGreaterThan className="text-neutral-400" />
           <Link
             to={"/auctions"}
-            className="font-semibold transition-all duration-300 hover:text-[#D6482B]"
+            className="font-semibold transition-all text-neutral-400 duration-300 hover:text-[#D6482B]"
           >
             Auctions
           </Link>
-          <FaGreaterThan className="text-stone-400" />
-          <p className="text-stone-600">{auctionDetail.title}</p>
+          <FaGreaterThan className="text-neutral-400" />
+          <p className="text-neutral-400">{auctionDetail.title}</p>
         </div>
         {loading ? (
           <Spinner />
         ) : (
-          <div className="flex gap-4 flex-col lg:flex-row">
+          <div className="flex gap-4 flex-col lg:flex-row pt-5">
             <div className="flex-1 flex flex-col gap-3">
               <div className="flex gap-4 flex-col lg:flex-row">
-                <div className="bg-white w-[100%] lg:w-40 lg:h-40 flex justify-center items-center p-5">
+                <div className="w-[100%] lg:w-40 lg:h-40 flex justify-center items-center p-5 ">
                   <img
                     src={auctionDetail.image?.url}
                     alt={auctionDetail.title}
                   />
                 </div>
                 <div className="flex flex-col justify-around pb-4">
-                  <h3 className="text-[#111] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl">
+                  <h3 className="text-gray-300 text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl">
                     {auctionDetail.title}
                   </h3>
-                  <p className="text-xl font-semibold">
+                  <p className="text-xl font-semibold text-gray-300">
                     Condition:{" "}
                     <span className="text-[#D6482B]">
                       {auctionDetail.condition}
                     </span>
                   </p>
-                  <p className="text-xl font-semibold">
+                  <p className="text-xl font-semibold text-gray-300">
                     Minimum Bid:{" "}
                     <span className="text-[#D6482B]">
                       Rs.{auctionDetail.startingBid}
@@ -83,21 +83,21 @@ const AuctionItem = () => {
                   </p>
                 </div>
               </div>
-              <p className="text-xl w-fit font-bold">
+              <p className="text-xl w-fit font-bold pt-5 text-white">
                 Auction Item Description
               </p>
               <hr className="my-2 border-t-[1px] border-t-stone-700" />
               {auctionDetail.description &&
                 auctionDetail.description.split(". ").map((element, index) => {
                   return (
-                    <li key={index} className="text-[18px] my-2">
+                    <li key={index} className="text-[18px] my-2 text-orange-300">
                       {element}
                     </li>
                   );
                 })}
             </div>
             <div className="flex-1">
-              <header className="bg-stone-200 py-4 text-[24px] font-semibold px-4">
+              <header className="bg-neutral-500 py-4 text-[24px] font-semibold px-4">
                 BIDS
               </header>
               <div className="bg-white px-4 min-h-fit lg:min-h-[650px]">
@@ -148,17 +148,29 @@ const AuctionItem = () => {
                     </p>
                   )
                 ) : Date.now() < new Date(auctionDetail.startTime) ? (
-                  <img
-                    src="/notStarted.png"
-                    alt="not-started"
-                    className="w-full max-h-[650px]"
-                  />
+                  <div className="video-container">
+      <video
+        src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/actioner-doing-bids-for-selling-painting-animation-download-in-lottie-json-gif-static-svg-file-formats--picture-auction-piece-of-art-sells-people-pack-animations-6861860.mp4"
+        autoPlay
+        loop
+        muted
+        className="w-full h-full object-cover"
+      />
+      <p className="text-center text-lg font-medium mt-2">Get Ready To Start Bid</p>
+    </div>
+    
+    
                 ) : (
-                  <img
-                    src="/auctionEnded.png"
-                    alt="ended"
-                    className="w-full max-h-[650px]"
+                  <div className="video-container">
+                  <video
+                    src="https://cdnl.iconscout.com/lottie/premium/thumb/auction-animation-download-in-lottie-json-gif-static-svg-file-formats--bidding-hammer-judge-miscellaneous-pack-animations-6873515.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    className="w-full h-full object-cover"
                   />
+                  <p className="text-center text-lg font-medium mt-2">Bid Is Over</p>
+                </div>
                 )}
               </div>
 
