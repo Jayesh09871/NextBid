@@ -2,17 +2,17 @@ import nodemailer from "nodemailer";
 
 export const sendEmail = async ({ email, subject, message }) => {
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",  // Gmail's SMTP server
-    port: 465,     // Port 587 for unsecure TLS
-    secure: true, // Set to false for TLS
+    host: "smtp.ethereal.email",  // Gmail's SMTP server
+    port: 587,     // Port 587 for unsecure TLS
+    secure: false, // Set to false for TLS
     auth: {
-      user: "your-email@gmail.com",  // Your Gmail email address
-      pass: "your-app-specific-password",  // Your Gmail app-specific password
+        user: 'horacio8@ethereal.email',
+        pass: 'Nue2ZtCzufTPK8FD7N'
     },
   });
 
   const options = {
-    from: "your-email@gmail.com", // Your Gmail email address
+    from: '"Jayesh 👻" <horacio8@ethereal.email>',  // Your Gmail email address
     to: email,
     subject: subject,
     text: message,
