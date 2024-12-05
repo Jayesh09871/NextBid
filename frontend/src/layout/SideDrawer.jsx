@@ -1,3 +1,232 @@
+// import React, { useState } from "react";
+// import { RiAuctionFill } from "react-icons/ri";
+// import { MdLeaderboard, MdDashboard } from "react-icons/md";
+// import { SiGooglesearchconsole } from "react-icons/si";
+// import { BsFillInfoSquareFill } from "react-icons/bs";
+// import { FaFacebook, FaUserCircle, FaEye } from "react-icons/fa";
+// import { RiInstagramFill } from "react-icons/ri";
+// import { GiHamburgerMenu } from "react-icons/gi";
+// import { IoMdCloseCircleOutline, IoIosCreate } from "react-icons/io";
+// import { FaFileInvoiceDollar } from "react-icons/fa6";
+// import { useDispatch, useSelector } from "react-redux";
+// import { logout } from "@/store/slices/userSlice";
+// import { Link } from "react-router-dom";
+
+// const Navbar = () => {
+//   const [show, setShow] = useState(false);
+//   const { isAuthenticated, user } = useSelector((state) => state.user);
+//   const dispatch = useDispatch();
+
+//   const handleLogout = () => {
+//     dispatch(logout());
+//   };
+
+//   return (
+//     <nav className="bg-black border-b border-stone-500">
+//       <div className="max-w-screen-xl mx-auto flex items-center justify-between p-4">
+//         {/* Logo */}
+//         <Link to="/">
+//           <h4 className="text-2xl font-semibold text-orange-500">
+//             Bid<span className="text-red-600">Hub</span>
+//           </h4>
+//         </Link>
+
+//         {/* Desktop Menu */}
+//         <ul className="hidden lg:flex items-center gap-6 text-xl font-semibold">
+//           <li>
+//             <Link
+//               to="/auctions"
+//               className="flex items-center gap-2 text-white hover:text-[#ef4444]"
+//             >
+//               <RiAuctionFill /> Auctions
+//             </Link>
+//           </li>
+//           <li>
+//             <Link
+//               to="/leaderboard"
+//               className="flex items-center gap-2 text-white hover:text-[#ef4444]"
+//             >
+//               <MdLeaderboard /> Leaderboard
+//             </Link>
+//           </li>
+//           {isAuthenticated && user && user.role === "Auctioneer" && (
+//             <>
+//               <li>
+//                 <Link
+//                   to="/submit-commission"
+//                   className="flex items-center gap-2 text-white hover:text-[#ef4444]"
+//                 >
+//                   <FaFileInvoiceDollar /> Submit Commission
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   to="/create-auction"
+//                   className="flex items-center gap-2 text-white hover:text-[#ef4444]"
+//                 >
+//                   <IoIosCreate /> Create Auction
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   to="/view-my-auctions"
+//                   className="flex items-center gap-2 hover:text-[#ef4444] text-white"
+//                 >
+//                   <FaEye /> View My Auctions
+//                 </Link>
+//               </li>
+//             </>
+//           )}
+//           {isAuthenticated && user && user.role === "Super Admin" && (
+//             <li>
+//               <Link
+//                 to="/dashboard"
+//                 className="flex items-center gap-2 hover:text-[#ef4444]"
+//               >
+//                 <MdDashboard /> Dashboard
+//               </Link>
+//             </li>
+//           )}
+//         </ul>
+
+//         {/* Auth Buttons */}
+//         <div className="hidden lg:flex items-center gap-4">
+//           {!isAuthenticated ? (
+//             <>
+//               <Link
+//                 to="/sign-up"
+//                 className="bg-[#ef4444] text-white py-1 px-4 rounded-md hover:bg-[#b8381e]"
+//               >
+//                 Sign Up
+//               </Link>
+//               <Link
+//                 to="/login"
+//                 className="text-[#DECCBE] border border-[#DECCBE] py-1 px-4 rounded-md hover:bg-[#fffefd] hover:text-[#fdba88]"
+//               >
+//                 Login
+//               </Link>
+//             </>
+//           ) : (
+//             <button
+//               onClick={handleLogout}
+//               className="bg-orange-600 text-white py-1 px-4 rounded-md hover:bg-red-600"
+//             >
+//               Logout
+//             </button>
+//           )}
+//         </div>
+
+//         {/* Mobile Menu Toggle */}
+//         <div
+//           onClick={() => setShow(!show)}
+//           className="lg:hidden text-3xl text-[#ef4444] cursor-pointer"
+//         >
+//           {show ? <IoMdCloseCircleOutline /> : <GiHamburgerMenu />}
+//         </div>
+//       </div>
+
+//       {/* Mobile Menu */}
+//       {show && (
+//         <ul className="lg:hidden flex flex-col gap-4 p-4 bg-[#f6f4f0] border-t border-stone-500">
+//           <li>
+//             <Link
+//               to="/auctions"
+//               className="flex items-center gap-2 hover:text-[#ef4444]"
+//               onClick={() => setShow(false)}
+//             >
+//               <RiAuctionFill /> Auctions
+//             </Link>
+//           </li>
+//           <li>
+//             <Link
+//               to="/leaderboard"
+//               className="flex items-center gap-2 hover:text-[#ef4444]"
+//               onClick={() => setShow(false)}
+//             >
+//               <MdLeaderboard /> Leaderboard
+//             </Link>
+//           </li>
+//           {isAuthenticated && user && user.role === "Auctioneer" && (
+//             <>
+//               <li>
+//                 <Link
+//                   to="/submit-commission"
+//                   className="flex items-center gap-2 hover:text-[#ef4444]"
+//                   onClick={() => setShow(false)}
+//                 >
+//                   <FaFileInvoiceDollar /> Submit Commission
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   to="/create-auction"
+//                   className="flex items-center gap-2 hover:text-[#ef4444]"
+//                   onClick={() => setShow(false)}
+//                 >
+//                   <IoIosCreate /> Create Auction
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   to="/view-my-auctions"
+//                   className="flex items-center gap-2 hover:text-[#ef4444]"
+//                   onClick={() => setShow(false)}
+//                 >
+//                   <FaEye /> View My Auctions
+//                 </Link>
+//               </li>
+//             </>
+//           )}
+//           {isAuthenticated && user && user.role === "Super Admin" && (
+//             <li>
+//               <Link
+//                 to="/dashboard"
+//                 className="flex items-center gap-2 hover:text-[#ef4444]"
+//                 onClick={() => setShow(false)}
+//               >
+//                 <MdDashboard /> Dashboard
+//               </Link>
+//             </li>
+//           )}
+//           <hr className="border-t-[#ef4444]" />
+//           {!isAuthenticated ? (
+//             <>
+//               <Link
+//                 to="/sign-up"
+//                 className="bg-[#ef4444] text-white py-1 px-4 rounded-md hover:bg-[#b8381e]"
+//                 onClick={() => setShow(false)}
+//               >
+//                 Sign Up
+//               </Link>
+//               <Link
+//                 to="/login"
+//                 className="text-[#DECCBE] border border-[#DECCBE] py-1 px-4 rounded-md hover:bg-[#fffefd] hover:text-[#fdba88]"
+//                 onClick={() => setShow(false)}
+//               >
+//                 Login
+//               </Link>
+//             </>
+//           ) : (
+//             <button
+//               onClick={() => {
+//                 handleLogout();
+//                 setShow(false);
+//               }}
+//               className="bg-orange-600 text-white py-1 px-4 rounded-md hover:bg-red-600"
+//             >
+//               Logout
+//             </button>
+//           )}
+//         </ul>
+//       )}
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+ 
+
 import React, { useState } from "react";
 import { RiAuctionFill } from "react-icons/ri";
 import { MdLeaderboard, MdDashboard } from "react-icons/md";
@@ -40,7 +269,7 @@ const SideDrawer = () => {
         <div className="relative">
           <Link to={"/"}>
             <h4 className="text-2xl font-semibold mb-4">
-              Prime<span className="text-[#D6482b]">Bid</span>
+              Bid<span className="text-[#D6482b]">Hub</span>
             </h4>
           </Link>
           <ul className="flex flex-col gap-3">
@@ -160,38 +389,8 @@ const SideDrawer = () => {
           />
         </div>
 
-        <div>
-          <div className="flex gap-2 items-center mb-2">
-            <Link
-              to="/"
-              className="bg-white text-stone-500 p-2 text-xl rounded-sm hover:text-blue-700"
-            >
-              <FaFacebook />
-            </Link>
-            <Link
-              to="/"
-              className="bg-white text-stone-500 p-2 text-xl rounded-sm hover:text-pink-500"
-            >
-              <RiInstagramFill />
-            </Link>
-          </div>
-          <Link
-            to={"/contact"}
-            className="text-stone-500 font-semibold hover:text-[#d6482b] hover:transition-all hover:duration-150"
-          >
-            Contact Us
-          </Link>
-          <p className="text-stone-500">&copy; PrimeBid, LLC.</p>
-          <p className="text-stone-500">
-            Degined By{" "}
-            <Link
-              to={"/"}
-              className="font-semibold hover:text-[#d6482b] hover:transition-all hover:duration-150"
-            >
-              CodeWithZeeshu
-            </Link>
-          </p>
-        </div>
+       
+
       </div>
     </>
   );

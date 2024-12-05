@@ -108,9 +108,11 @@ const ViewAuctionDetails = () => {
                             alt={element.userName}
                             className="w-12 h-12 rounded-full my-2 hidden md:block"
                           />
+
                           <p className="text-[18px] font-semibold">
                             {element.userName}
                           </p>
+
                         </div>
                         <p className="flex-1 text-center">{element.amount}</p>
                         {index === 0 ? (

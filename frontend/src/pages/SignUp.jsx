@@ -2,6 +2,8 @@ import { register } from "@/store/slices/userSlice";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { User, Mail, Phone, Home, Lock, FileText, DollarSign, CreditCard, Banknote } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const SignUp = () => {
   const [userName, setUserName] = useState("");
@@ -32,12 +34,13 @@ const SignUp = () => {
     formData.append("address", address);
     formData.append("role", role);
     formData.append("profileImage", profileImage);
-    role === "Auctioneer" &&
-      (formData.append("bankAccountName", bankAccountName),
-      formData.append("bankAccountNumber", bankAccountNumber),
-      formData.append("bankName", bankName),
-      formData.append("easypaisaAccountNumber", easypaisaAccountNumber),
-      formData.append("paypalEmail", paypalEmail));
+    if (role === "Auctioneer") {
+      formData.append("bankAccountName", bankAccountName);
+      formData.append("bankAccountNumber", bankAccountNumber);
+      formData.append("bankName", bankName);
+      formData.append("easypaisaAccountNumber", easypaisaAccountNumber);
+      formData.append("paypalEmail", paypalEmail);
+    }
     dispatch(register(formData));
   };
 
@@ -59,178 +62,248 @@ const SignUp = () => {
 
   return (
     <>
-      <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[320px] flex flex-col min-h-screen py-4 justify-center">
-        <div className="bg-white mx-auto w-full h-auto px-2 flex flex-col gap-4 items-center py-4 justify-center rounded-md">
-          <h1
-            className={`text-[#d6482b] text-2xl font-bold mb-2 min-[480px]:text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl`}
-          >
-            Register
-          </h1>
-          <form
-            className="flex flex-col gap-5 w-full"
-            onSubmit={handleRegister}
-          >
-            <p className="font-semibold text-xl md:text-2xl">
+      <section className="w-full h-fit px-5 pt-20 lg:pl-[320px] flex flex-col min-h-screen py-4 justify-center bg-black text-white">
+        <motion.div
+          className="bg-[#1a1a1a] mx-auto w-full h-auto px-6 flex flex-col gap-6 items-center py-8 justify-center rounded-md shadow-lg"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-[#d6482b] text-3xl font-bold mb-4">Register</h1>
+          <form className="flex flex-col gap-6 w-full" onSubmit={handleRegister}>
+            <motion.p
+              className="font-semibold text-xl"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4 }}
+            >
               Personal Details
-            </p>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <div className="flex flex-col sm:flex-1">
-                <label className="text-[16px] text-stone-600">Full Name</label>
+            </motion.p>
+            <div className="flex flex-col gap-5 sm:flex-row">
+              <motion.div
+                className="flex flex-col sm:flex-1 relative"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <label className="text-sm">Full Name</label>
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                 <input
                   type="text"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
-                  className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none"
+                  className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
                 />
-              </div>
-              <div className="flex flex-col sm:flex-1">
-                <label className="text-[16px] text-stone-600">Email</label>
+              </motion.div>
+              <motion.div
+                className="flex flex-col sm:flex-1 relative"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <label className="text-sm">Email</label>
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none"
+                  className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
                 />
-              </div>
+              </motion.div>
             </div>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <div className="flex flex-col sm:flex-1">
-                <label className="text-[16px] text-stone-600">Phone</label>
+            <div className="flex flex-col gap-5 sm:flex-row">
+              <motion.div
+                className="flex flex-col sm:flex-1 relative"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <label className="text-sm">Phone</label>
+                <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                 <input
                   type="number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none"
+                  className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
                 />
-              </div>
-              <div className="flex flex-col sm:flex-1">
-                <label className="text-[16px] text-stone-600">Address</label>
+              </motion.div>
+              <motion.div
+                className="flex flex-col sm:flex-1 relative"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <label className="text-sm">Address</label>
+                <Home className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                 <input
                   type="text"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none"
+                  className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
                 />
-              </div>
+              </motion.div>
             </div>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <div className="flex flex-col sm:flex-1">
-                <label className="text-[16px] text-stone-600">Role</label>
+            <div className="flex flex-col gap-5 sm:flex-row">
+              <motion.div
+                className="flex flex-col sm:flex-1 relative"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7 }}
+              >
+                <label className="text-sm">Role</label>
                 <select
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none"
+                  className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
                 >
                   <option value="">Select Role</option>
                   <option value="Auctioneer">Auctioneer</option>
                   <option value="Bidder">Bidder</option>
+                  {/* <option value="Super Admin">Super Admin</option> */}
+
                 </select>
-              </div>
-              <div className="flex flex-col sm:flex-1">
-                <label className="text-[16px] text-stone-600">Password</label>
+              </motion.div>
+              <motion.div
+                className="flex flex-col sm:flex-1 relative"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7 }}
+              >
+                <label className="text-sm">Password</label>
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none"
+                  className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
                 />
-              </div>
-            </div>
-            <div className="flex flex-col sm:flex-1 gap-2">
-              <label className="text-[16px] text-stone-600">
-                Profile Image
-              </label>
-              <div className="flex items-center gap-3">
-                <img
-                  src={
-                    profileImagePreview
-                      ? profileImagePreview
-                      : "/imageHolder.jpg"
-                  }
-                  alt="profileImagePreview"
-                  className="w-14 h-14 rounded-full"
-                />
-                <input type="file" onChange={imageHandler} />
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <label className="font-semibold text-xl md:2xl flex flex-col">
-                Payment Method Details{" "}
-                <span className="text-[12px] text-stone-500">
-                  Fill Payment Details Only If you are registering as an
-                  Auctioneer
-                </span>
-              </label>
-              <div className="flex flex-col gap-2">
-                <label className="text-[16px] text-stone-500">
-                  Bank Details
-                </label>
-                <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
-                  <select
-                    value={bankName}
-                    onChange={(e) => setBankName(e.target.value)}
-                    className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none sm:flex-1"
-                    disabled={role === "Bidder"}
-                  >
-                    <option value="">Select Your Bank</option>
-                    <option value="Meezan Bank">Meezan Bank</option>
-                    <option value="UBL">UBL</option>
-                    <option value="HBL">HBL</option>
-                    <option value="Allied Bank">Allied Bank</option>
-                  </select>
-                  <input
-                    type="text"
-                    value={bankAccountNumber}
-                    placeholder="IBAN / IFSC"
-                    onChange={(e) => setBankAccountNumber(e.target.value)}
-                    className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none sm:flex-1"
-                    disabled={role === "Bidder"}
-                  />
-                  <input
-                    type="text"
-                    value={bankAccountName}
-                    placeholder="Bank Account UserName"
-                    onChange={(e) => setBankAccountName(e.target.value)}
-                    className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none sm:flex-1"
-                    disabled={role === "Bidder"}
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="text-[16px] text-stone-600 font-semibold">
-                  Easypaisa And Paypal Details
-                </label>
-                <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
-                  <input
-                    type="number"
-                    value={easypaisaAccountNumber}
-                    placeholder="Easypaisa Account Number"
-                    onChange={(e) => setEasypaisaAccountNumber(e.target.value)}
-                    className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none sm:flex-1"
-                    disabled={role === "Bidder"}
-                  />
-                  <input
-                    type="email"
-                    value={paypalEmail}
-                    placeholder="Paypal Email"
-                    onChange={(e) => setPaypalEmail(e.target.value)}
-                    className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none sm:flex-1"
-                    disabled={role === "Bidder"}
-                  />
-                </div>
-              </div>
+              </motion.div>
             </div>
 
+            <motion.div
+              className="flex flex-col gap-4 sm:flex-1 relative"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <label className="text-sm">Profile Picture</label>
+              <input
+                type="file"
+                onChange={imageHandler}
+                className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
+              />
+              {profileImagePreview && (
+                <img
+                  src={profileImagePreview}
+                  alt="Profile"
+                  className="w-24 h-24 mt-2 object-cover rounded-full"
+                />
+              )}
+            </motion.div>
+
+            {role === "Auctioneer" && (
+              <>
+                <motion.p
+                  className="font-semibold text-xl mt-4"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.9 }}
+                >
+                  Bank Details
+                </motion.p>
+                <div className="flex flex-col gap-5 sm:flex-row">
+                  <motion.div
+                    className="flex flex-col sm:flex-1 relative"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1 }}
+                  >
+                    <label className="text-sm">Bank Name</label>
+                    <Banknote className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+                    <input
+                      type="text"
+                      value={bankName}
+                      onChange={(e) => setBankName(e.target.value)}
+                      className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
+                    />
+                  </motion.div>
+                </div>
+
+                <div className="flex flex-col gap-5 sm:flex-row">
+                  <motion.div
+                    className="flex flex-col sm:flex-1 relative"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1 }}
+                  >
+                    <label className="text-sm">Bank Account Number</label>
+                    <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+                    <input
+                      type="text"
+                      value={bankAccountNumber}
+                      onChange={(e) => setBankAccountNumber(e.target.value)}
+                      className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
+                    />
+                  </motion.div>
+                  <motion.div
+                    className="flex flex-col sm:flex-1 relative"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1 }}
+                  >
+                    <label className="text-sm">Bank Account Name</label>
+                    <input
+                      type="text"
+                      value={bankAccountName}
+                      onChange={(e) => setBankAccountName(e.target.value)}
+                      className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
+                    />
+                  </motion.div>
+                </div>
+
+                <div className="flex flex-col gap-5 sm:flex-row">
+                  <motion.div
+                    className="flex flex-col sm:flex-1 relative"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1.1 }}
+                  >
+                    <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+                    <input
+                      type="text"
+                      value={easypaisaAccountNumber}
+                      onChange={(e) => setEasypaisaAccountNumber(e.target.value)}
+                      placeholder="Easypaisa Account"
+                      className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
+                    />
+                  </motion.div>
+                  <motion.div
+                    className="flex flex-col sm:flex-1 relative"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1.1 }}
+                  >
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+                    <input
+                      type="email"
+                      value={paypalEmail}
+                      onChange={(e) => setPaypalEmail(e.target.value)}
+                      placeholder="PayPal Email"
+                      className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
+                    />
+                  </motion.div>
+                </div>
+              </>
+            )}
             <button
               className="bg-[#d6482b] w-[420px] font-semibold hover:bg-[#b8381e] transition-all duration-300 text-xl py-2 px-4 rounded-md text-white mx-auto lg:w-[640px] my-4"
               type="submit"
               disabled={loading}
             >
-              {loading && "Registering..."}
-              {!loading && "Register"}
+              {loading ? "Registering..." : "Register"}
             </button>
           </form>
-        </div>
+        </motion.div>
       </section>
     </>
   );
