@@ -17,8 +17,8 @@ const userSchema = new mongoose.Schema({
   address: String,
   phone: {
     type: String,
-    minLength: [11, "Phone Number must caontain exact 11 digits."],
-    maxLength: [11, "Phone Number must caontain exact 11 digits."],
+    minLength: [8, "Phone Number must caontain exact 8 digits."],
+    maxLength: [15, "Phone Number must caontain exact 15 digits."],
   },
   profileImage: {
     public_id: {
