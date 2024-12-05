@@ -16,7 +16,7 @@ const Leaderboard = () => {
           </h3>
         </div>
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border my-5 border-gray-300">
+          <table className="min-w-full bg-white border my-5 bg-zinc-400">
             <thead>
               <tr>
                 <th className="py-2 px-4 text-left">Profile Pic</th>

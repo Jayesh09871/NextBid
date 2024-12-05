@@ -6,7 +6,7 @@ const Leaderboard = () => {
   const { loading, leaderboard } = useSelector((state) => state.user);
 
   return (
-    <section className="w-full px-5 py-5 flex flex-col items-center ">
+    <section className="w-full px-5 py-5 flex flex-col items-center mb-[24rem]">
       {loading ? (
         <Spinner />
       ) : (
