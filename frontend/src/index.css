@@ -76,3 +76,26 @@
     width: 100%;
   }
 }
+
+@layer components {
+  .custom-label {
+    color: #f32c2c;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .custom-input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    color: rgb(28, 195, 48);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+
+  .custom-input:disabled {
+    background-color: #1e1e1e;
+    cursor: not-allowed;
+  }
+}

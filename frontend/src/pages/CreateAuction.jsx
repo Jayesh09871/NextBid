@@ -65,21 +65,22 @@ const CreateAuction = () => {
   }, [isAuthenticated]);
 
   return (
-    <article className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[80px] flex flex-col">
+    <article className="w-full h-fit px-36 pt-20 lg:pl-[140px] flex flex-col min-h-screen py-4 justify-start bg-black text-white">
+      
+      <div className="bg-[#1a1a1a] mx-auto w-full h-auto px-6 flex flex-col gap-6 items-center py-8 justify-center rounded-md shadow-lg">
       <h1
-        className={`text-[#d6482b] text-2xl font-bold mb-2 min-[480px]:text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl`}
+        className={`text-[#d6482b] text-3xl font-bold mb-4`}
       >
         Create Auction
       </h1>
-      <div className="bg-white mx-auto w-full h-auto px-2 flex flex-col gap-4 items-center py-4 justify-center rounded-md">
         <form
-          className="flex flex-col gap-5 w-full"
+          className="flex flex-col gap-6 w-full"
           onSubmit={handleCreateAuction}
         >
-          <p className="font-semibold text-xl md:text-2xl">Auction Detail</p>
-          <div className="flex flex-col gap-4 sm:flex-row">
+          <p className="font-semibold text-xl">Auction Detail</p>
+          <div className="flex flex-col gap-5 sm:flex-row">
             <div className="flex flex-col sm:flex-1">
-              <label className="text-[16px] text-stone-600">Title</label>
+              <label className="text-sm">Title</label>
               <input
                 type="text"
                 value={title}
@@ -88,7 +89,7 @@ const CreateAuction = () => {
               />
             </div>
             <div className="flex flex-col sm:flex-1">
-              <label className="text-[16px] text-stone-600">Category</label>
+              <label className="text-sm">Category</label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
@@ -107,7 +108,7 @@ const CreateAuction = () => {
           </div>
           <div className="flex flex-col gap-4 sm:flex-row">
             <div className="flex flex-col sm:flex-1">
-              <label className="text-[16px] text-stone-600">Condition</label>
+              <label className="text-sm">Condition</label>
               <select
                 value={condition}
                 onChange={(e) => setCondition(e.target.value)}
@@ -119,7 +120,7 @@ const CreateAuction = () => {
               </select>
             </div>
             <div className="flex flex-col sm:flex-1">
-              <label className="text-[16px] text-stone-600">Starting Bid</label>
+              <label className="text-sm">Starting Bid</label>
               <input
                 type="number"
                 value={startingBid}
@@ -130,7 +131,7 @@ const CreateAuction = () => {
           </div>
           <div className="flex flex-col gap-4 sm:flex-row">
             <div className="flex flex-col sm:flex-1">
-              <label className="text-[16px] text-stone-600">Description</label>
+              <label className="text-sm">Description</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -141,7 +142,7 @@ const CreateAuction = () => {
           </div>
           <div className="flex flex-col gap-4 sm:flex-row">
             <div className="flex flex-col sm:flex-1">
-              <label className="text-[16px] text-stone-600">
+              <label className="text-sm">
                 Auction Starting Time
               </label>
               <DatePicker
@@ -155,7 +156,7 @@ const CreateAuction = () => {
               />
             </div>
             <div className="flex flex-col sm:flex-1">
-              <label className="text-[16px] text-stone-600">
+              <label className="text-sm">
                 Auction End Time
               </label>
               <DatePicker
@@ -170,17 +171,17 @@ const CreateAuction = () => {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <label className="font-semibold text-xl md:text-2xl">
+            <label className="text-sm">
               Auction Item Image
             </label>
             <div class="flex items-center justify-center w-full">
               <label
                 for="dropzone-file"
-                class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-[#1a1a1a] dark:bg-gray-700 hover:bg-[#2a2a2a] dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
               >
-                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <div class="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white">
                   {imagePreview ? (
-                    <img src={imagePreview} alt={title} className="w-44 h-auto"/>
+                    <img src={imagePreview} alt={title} className="w-24 h-24 mt-2 object-cover rounded-full"/>
                   ) : (
                     <>
                       <svg

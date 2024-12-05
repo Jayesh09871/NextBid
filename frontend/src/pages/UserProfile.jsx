@@ -11,86 +11,75 @@ const UserProfile = () => {
       navigateTo("/");
     }
   }, [isAuthenticated]);
+
   return (
     <>
-      <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[80px] flex flex-col min-h-screen py-4 justify-start">
+      <section className="w-full ml-0 m-0 h-fit px-48 pt-20 lg:pl-[160px] flex flex-col min-h-screen py-4 justify-start opacity-0 animate-fadeIn">
         {loading ? (
           <Spinner />
         ) : (
           <>
-            <div className="bg-white mx-auto w-full h-auto px-2 flex flex-col gap-4 items-center py-4 justify-center rounded-md">
+            <div className="bg-[#1e1e1e] mx-auto w-full h-auto px-36 flex flex-col gap-6 items-center py-4 justify-center rounded-md">
               <img
                 src={user.profileImage?.url}
                 alt="/imageHolder.jpg"
-                className="w-36 h-36 rounded-full"
+                className="w-36 h-36 rounded-full border border-4 border-dashed border-b-pink-500 border-t-pink-500 border-l-rose-500 border-r-rose-500"
               />
 
               <div className="mb-6 w-full">
-                <h3 className="text-xl font-semibold mb-4">Personal Details</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <h3 className="text-xl font-semibold mb-4 text-white">Personal Details</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Username
-                    </label>
+                    <label className="custom-label">Username</label>
                     <input
                       type="text"
                       defaultValue={user.userName}
-                      className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                      className="custom-input"
                       disabled
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Email
-                    </label>
+                    <label className="custom-label">Email</label>
                     <input
                       type="text"
                       defaultValue={user.email}
-                      className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                      className="custom-input"
                       disabled
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Phone
-                    </label>
+                    <label className="custom-label">Phone</label>
                     <input
                       type="number"
                       defaultValue={user.phone}
-                      className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                      className="custom-input"
                       disabled
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Address
-                    </label>
+                    <label className="custom-label">Address</label>
                     <input
                       type="text"
                       defaultValue={user.address}
-                      className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                      className="custom-input"
                       disabled
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Role
-                    </label>
+                    <label className="custom-label">Role</label>
                     <input
                       type="text"
                       defaultValue={user.role}
-                      className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                      className="custom-input"
                       disabled
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Joined On
-                    </label>
+                    <label className="custom-label">Joined On</label>
                     <input
                       type="text"
                       defaultValue={user.createdAt?.substring(0, 10)}
-                      className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                      className="custom-input"
                       disabled
                     />
                   </div>
@@ -98,69 +87,59 @@ const UserProfile = () => {
               </div>
 
               {user.role === "Auctioneer" && (
-                <div className="mb-6 w-full">
-                  <h3 className="text-xl font-semibold mb-4">
+                <div className="mb-6 w-full opacity-0 animate-slideInFromLeft">
+                  <h3 className="text-xl font-semibold mb-4 text-white">
                     Payment Details
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">
-                        Bank Name
-                      </label>
+                      <label className="custom-label">Bank Name</label>
                       <input
                         type="text"
                         defaultValue={user.paymentMethods.bankTransfer.bankName}
-                        className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                        className="custom-input"
                         disabled
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">
-                        Bank Account (IBAN)
-                      </label>
+                      <label className="custom-label">Bank Account (IBAN)</label>
                       <input
                         type="text"
                         defaultValue={
                           user.paymentMethods.bankTransfer.bankAccountNumber
                         }
-                        className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                        className="custom-input"
                         disabled
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">
-                        User Name On Bank Account
-                      </label>
+                      <label className="custom-label">User Name On Bank Account</label>
                       <input
                         type="text"
                         defaultValue={
                           user.paymentMethods.bankTransfer.bankAccountName
                         }
-                        className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                        className="custom-input"
                         disabled
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">
-                        Easypaisa Account Number
-                      </label>
+                      <label className="custom-label">Easypaisa Account Number</label>
                       <input
                         type="text"
                         defaultValue={
                           user.paymentMethods.easypaisa.easypaisaAccountNumber
                         }
-                        className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                        className="custom-input"
                         disabled
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">
-                        Paypal Email
-                      </label>
+                      <label className="custom-label">Paypal Email</label>
                       <input
                         type="text"
                         defaultValue={user.paymentMethods.paypal.paypalEmail}
-                        className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                        className="custom-input"
                         disabled
                       />
                     </div>
@@ -169,20 +148,18 @@ const UserProfile = () => {
               )}
 
               <div className="mb-6 w-full">
-                <h3 className="text-xl font-semibold mb-4">
+                <h3 className="text-xl font-semibold mb-4 text-white">
                   Other User Details
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {user.role === "Auctioneer" && (
                     <>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">
-                          Unpaid Commissions
-                        </label>
+                        <label className="custom-label">Unpaid Commissions</label>
                         <input
                           type="text"
                           defaultValue={user.unpaidCommission}
-                          className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                          className="custom-input"
                           disabled
                         />
                       </div>
@@ -191,24 +168,20 @@ const UserProfile = () => {
                   {user.role === "Bidder" && (
                     <>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">
-                          Auctions Won
-                        </label>
+                        <label className="custom-label">Auctions Won</label>
                         <input
                           type="text"
                           defaultValue={user.auctionsWon}
-                          className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                          className="custom-input"
                           disabled
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">
-                          Money Spent
-                        </label>
+                        <label className="custom-label">Money Spent</label>
                         <input
                           type="text"
                           defaultValue={user.moneySpent}
-                          className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
+                          className="custom-input"
                           disabled
                         />
                       </div>
