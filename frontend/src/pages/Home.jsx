@@ -25,19 +25,13 @@ const Home = () => {
     <>
       <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[320px] flex flex-col min-h-screen py-4 justify-center">
         <div>
-          <p className="text-[#DECCBE] font-bold text-xl mb-8">
-            Transparency Leads to Your Victory
-          </p>
-          <h1
-            className={`text-[#111] text-2xl font-bold mb-2 min-[480px]:text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl`}
-          >
-            Transparent Auctions
-          </h1>
+         
           <h1
             className={`text-[#d6482b] text-2xl font-bold mb-2 min-[480px]:text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl`}
           >
-            Be The Winner
+            WinThrough  ClearBid
           </h1>
+
           <div className="flex gap-4 my-8">
             {!isAuthenticated && (
               <>
@@ -58,7 +52,9 @@ const Home = () => {
           </div>
         </div>
         <div className="flex flex-col gap-6">
-          <h3 className="text-[#111] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl">How it works</h3>
+          <h3 className="text-[#111] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl">
+            How it works
+          </h3>
           <div className="flex flex-col gap-4 md:flex-row md:flex-wrap w-full">
             {howItWorks.map((element) => {
               return (
