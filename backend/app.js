@@ -18,9 +18,12 @@ config({
   path: "./config/config.env",
 });
 
+
+const corsOrigin = process.env.CORS_ORIGIN;
+
 app.use(
   cors({
-    origin: 'http://localhost:5173', // Hardcoding the frontend URL here
+    origin: corsOrigin, 
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
