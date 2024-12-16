@@ -24,7 +24,7 @@ export const postCommissionProof = (data) => async (dispatch) => {
   dispatch(commissionSlice.actions.postCommissionProofRequest());
   try {
     const response = await axios.post(
-      "http://localhost:5001/api/v1/commission/proof",
+      `${import.meta.env.VITE_BASE_URL}/commission/proof`,
       data,
       {
         withCredentials: true,

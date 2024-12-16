@@ -2,6 +2,7 @@ import Spinner from "@/custom-components/Spinner";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Spline from '@splinetool/react-spline';
 
 const UserProfile = () => {
   const { user, isAuthenticated, loading } = useSelector((state) => state.user);
@@ -14,12 +15,15 @@ const UserProfile = () => {
 
   return (
     <>
-      <section className="w-full ml-0 m-0 h-fit px-48 pt-20 lg:pl-[160px] flex flex-col min-h-screen py-4 justify-start opacity-0 animate-fadeIn">
+      <section className="relative w-full ml-0 m-0 h-fit px-48 pt-20 lg:pl-[160px] flex flex-col min-h-screen py-4 justify-start opacity-0 animate-fadeIn">
+      <div className="absolute top-0 left-0 w-full h-full">
+      <Spline scene="https://prod.spline.design/QM2OTOZG2kERY3aS/scene.splinecode" />
+    </div>
         {loading ? (
           <Spinner />
         ) : (
           <>
-            <div className="bg-[#1e1e1e] mx-auto w-full h-auto px-36 flex flex-col gap-6 items-center py-4 justify-center rounded-md">
+            <div className="relative mx-auto w-full h-auto px-36 flex flex-col gap-6 items-center py-4 justify-center rounded-md">
               <img
                 src={user.profileImage?.url}
                 alt="/imageHolder.jpg"

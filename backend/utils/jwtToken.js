@@ -1,7 +1,9 @@
+import { AppConfig } from "../config/env.config.js";
+
 export const generateToken = (user, message, statusCode, res) => {
   const token = user.generateJsonWebToken();
-  console.log(process.env.COOKIE_EXPIRE);
-  const cookieExpiresIn = process.env.COOKIE_EXPIRE || 365;
+  const cookieExpiresIn = AppConfig.COOKIE_EXPIRE || 30;
+
   res
     .status(statusCode)
     .cookie("token", token, {
