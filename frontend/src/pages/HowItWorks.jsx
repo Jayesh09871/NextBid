@@ -6,6 +6,7 @@ import {
   FaRedo,
   FaUser,
 } from "react-icons/fa";
+import Spline from '@splinetool/react-spline';
 
 const HowItWorks = () => {
   const steps = [
@@ -49,8 +50,12 @@ const HowItWorks = () => {
 
   return (
     <>
-      <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[80px] flex flex-col min-h-screen py-4 justify-center">
-        <h1
+      <section className="w-full ml-0 m-0 h-fit px-5 pt-24 lg:pl-[80px] gap-7 flex flex-col min-h-screen py-4 justify-center">
+        {/* Spline background */}
+        <Spline
+            className="fixed inset-0 -z-10"
+            scene="https://prod.spline.design/wsx58pM3VzFXVb3k/scene.splinecode"
+          /> <h1
           className={`text-[#d6482b] text-2xl font-bold mb-2 min-[480px]:text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl`}
         >
           Discover How NextBid Operates
@@ -60,7 +65,7 @@ const HowItWorks = () => {
             return (
               <div
                 key={index}
-                className="bg-white rounded-md p-2 lg:p-5 flex flex-col gap-2 group hover:bg-black transition-all duration-300"
+                className=" rounded-md p-2 lg:p-5 flex flex-col gap-2 group  transition-all duration-300"
               >
                 <div className="bg-black text-white p-3 text-xl rounded-full w-fit group-hover:bg-[#d6482b] transition-all duration-300">
                   {element.icon}
@@ -70,7 +75,7 @@ const HowItWorks = () => {
                 >
                   {element.title}
                 </h3>
-                <p className="text-xl text-stone-700 group-hover:text-[#fff] transition-all duration-300">
+                <p className="text-xl text-stone-700 group-hover:text-stone-500 transition-all duration-300">
                   {element.description}
                 </p>
               </div>

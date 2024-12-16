@@ -39,7 +39,7 @@
   }
   
   .card:hover .card-img {
-    opacity: 0.7;
+    opacity: 0.4;
   }
   
   .info {
@@ -47,7 +47,7 @@
     bottom: 20px;
     left: 20px;
     z-index: 2;
-    color: #fdfcfc;
+    color: #8494f8;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.5s, transform 0.5s;
@@ -71,7 +71,7 @@
   }
   
   .bid-amount {
-    color: #16f47a;
+    color: #8494f8;
     font-weight: bold;
     font-size: 16px;
   }
@@ -83,7 +83,7 @@
   }
   
   .time {
-    color:  #16f47a;
+    color:  #8494f8;
     font-weight: bold;
     font-size: 16px;
   }

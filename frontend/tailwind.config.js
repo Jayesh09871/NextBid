@@ -17,6 +17,7 @@ module.exports = {
       },
     },
     extend: {
+      
       colors: {
         primary: "#D6482B",
         border: "hsl(var(--border))",
@@ -84,5 +85,6 @@ module.exports = {
       },
     },
   },
+  
   plugins: [require("tailwindcss-animate")],
 }

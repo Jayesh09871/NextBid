@@ -15,7 +15,7 @@ const ViewAuctionDetails = () => {
   const navigateTo = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useEffect(() => { 
     if (!isAuthenticated || user.role === "Bidder") {
       navigateTo("/");
     }

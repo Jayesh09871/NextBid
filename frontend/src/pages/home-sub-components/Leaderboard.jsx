@@ -16,7 +16,7 @@ const Leaderboard = () => {
           </h3>
         </div>
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border my-5 bg-zinc-400">
+          <table className="min-w-full  border border-white my-5 ">
             <thead>
               <tr>
                 <th className="py-2 px-4 text-left">Profile Pic</th>
@@ -26,7 +26,7 @@ const Leaderboard = () => {
               </tr>
             </thead>
             <tbody className="text-gray-700">
-              {leaderboard.slice(0, 10).map((element, index) => {
+              {leaderboard && leaderboard.slice(0, 10).map((element, index) => {
                 return (
                   <tr key={element._id} className="border-b border-gray-300">
                     <td className="flex gap-2 items-center py-2 px-4">

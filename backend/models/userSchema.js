@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { AppConfig } from "../config/env.config.js";
 
 const userSchema = new mongoose.Schema({
   userName: {
@@ -77,7 +78,7 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
 };
 
 userSchema.methods.generateJsonWebToken = function () {
-  return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
+  return jwt.sign({ id: this._id }, AppConfig.JWT_SECRET_KEY, {
     expiresIn: '1h',
   });
 };

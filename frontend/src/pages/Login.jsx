@@ -4,6 +4,7 @@ import { Lock, Mail } from 'lucide-react';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Spline from '@splinetool/react-spline';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -30,17 +31,19 @@ const Login = () => {
 
   return (
     <>
+     <div className="relative w-full h-screen overflow-hidden">
+        {/* Background Spline */}
+        <Spline className="absolute top-0 left-0 w-full h-full" scene="https://prod.spline.design/2lgBzNUIfpxUma4U/scene.splinecode" />
       <section className="w-full h-fit px-96 pt-20 lg:pl-[320px] flex flex-col min-h-screen py-4 justify-center bg-neutral-800 text-white">
         <motion.div
-          className="bg-[#1a1a1a] mx-auto w-full h-auto px-6 flex flex-col gap-6 items-center py-8 justify-center rounded-md shadow-lg"
+          className="mx-auto w-full h-auto px-6 flex flex-col gap-6 items-center py-8 justify-center rounded-md shadow-lg"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-[#d6482b] text-3xl font-bold mb-4">Login</h1>
-          <form className="flex flex-col gap-6 w-full" onSubmit={handleLogin}>
+          <form className="flex text-black flex-col relative gap-6 w-full" onSubmit={handleLogin}>
             <motion.p
-              className="font-semibold text-xl"
+              className="font-semibold text-xl text-gray-600"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4 }}
@@ -55,12 +58,12 @@ const Login = () => {
                 transition={{ duration: 0.5 }}
               >
                 <label className="text-sm">Email</label>
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
+                  className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-black"
                 />
               </motion.div>
             </div>
@@ -72,12 +75,12 @@ const Login = () => {
                 transition={{ duration: 0.6 }}
               >
                 <label className="text-sm">Password</label>
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black" />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-white"
+                  className="text-lg py-2 pl-10 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none text-black"
                 />
               </motion.div>
             </div>
@@ -94,6 +97,7 @@ const Login = () => {
           </form>
         </motion.div>
       </section>
+      </div>
     </>
   );
 };

@@ -12,18 +12,13 @@ import commissionRouter from "./router/commissionRouter.js";
 import superAdminRouter from "./router/superAdminRoutes.js";
 import { endedAuctionCron } from "./automation/endedAuctionCron.js";
 import { verifyCommissionCron } from "./automation/verifyCommissionCron.js";
+import { AppConfig } from "./config/env.config.js";
 
 const app = express();
-config({
-  path: "./config/config.env",
-});
-
-
-const corsOrigin = process.env.CORS_ORIGIN;
 
 app.use(
   cors({
-    origin: corsOrigin, 
+    origin: AppConfig.CORS_ORIGIN, 
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
