@@ -86,6 +86,11 @@ const userSlice = createSlice({
     },
   },
 });
+const authHeader = () => {
+  const token = localStorage.getItem("token");
+  return token ? { Authorization: `Bearer ${token}` } : {};
+};
+
 
 export const register = (data) => async (dispatch) => {
   dispatch(userSlice.actions.registerRequest());
@@ -94,19 +99,24 @@ export const register = (data) => async (dispatch) => {
       `${import.meta.env.VITE_BASE_URL}/user/register`,
       data,
       {
-        withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
+
+    // Save the token in localStorage
+    const { token } = response.data;
+    localStorage.setItem("token", token);
+
     dispatch(userSlice.actions.registerSuccess(response.data));
     toast.success(response.data.message);
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(userSlice.actions.registerFailed());
-    toast.error(error.response.data.message);
+    toast.error(error.response?.data?.message || "Registration failed");
     dispatch(userSlice.actions.clearAllErrors());
   }
 };
+
 
 export const login = (data) => async (dispatch) => {
   dispatch(userSlice.actions.loginRequest());
@@ -115,42 +125,79 @@ export const login = (data) => async (dispatch) => {
       `${import.meta.env.VITE_BASE_URL}/user/login`,
       data,
       {
-        withCredentials: true,
         headers: { "Content-Type": "application/json" },
       }
     );
+
+    // Save the token in localStorage
+    const { token } = response.data;
+    localStorage.setItem("token", token);
+
     dispatch(userSlice.actions.loginSuccess(response.data));
     toast.success(response.data.message);
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(userSlice.actions.loginFailed());
-    toast.error(error.response.data.message);
+    toast.error(error.response?.data?.message || "Login failed");
     dispatch(userSlice.actions.clearAllErrors());
   }
 };
 
+
 export const logout = () => async (dispatch) => {
   try {
+    // Get token from localStorage
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.log("No token found. User might already be logged out.");
+      throw new Error("No token found. User might already be logged out.");
+    }
+    console.log("Token found in localStorage:", token);
+
+    // Send the logout request
     const response = await axios.get(
       `${import.meta.env.VITE_BASE_URL}/user/logout`,
-      { withCredentials: true }
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
+
+    console.log("Logout response received from backend:", response);
+
+    // Clear the token from localStorage
+    localStorage.removeItem("token");
+    console.log("Token removed from localStorage");
+
     dispatch(userSlice.actions.logoutSuccess());
     toast.success(response.data.message);
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
+    console.error("Logout Error:", error.response || error.message);
+    console.log("Error details:", error.response?.data || error);
+
     dispatch(userSlice.actions.logoutFailed());
-    toast.error(error.response.data.message);
+    toast.error(
+      error.response?.data?.message || "Logout failed. Please try again."
+    );
     dispatch(userSlice.actions.clearAllErrors());
   }
 };
 
+
+
 export const fetchUser = () => async (dispatch) => {
   dispatch(userSlice.actions.fetchUserRequest());
   try {
-    const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/user/me`, {
-      withCredentials: true,
-    });
+    const response = await axios.get(
+      `${import.meta.env.VITE_BASE_URL}/user/me`,
+      {
+        headers: {
+          ...authHeader(),
+        },
+      }
+    );
     dispatch(userSlice.actions.fetchUserSuccess(response.data.user));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
@@ -160,13 +207,16 @@ export const fetchUser = () => async (dispatch) => {
   }
 };
 
+
 export const fetchLeaderboard = () => async (dispatch) => {
   dispatch(userSlice.actions.fetchLeaderboardRequest());
   try {
     const response = await axios.get(
       `${import.meta.env.VITE_BASE_URL}/user/leaderboard`,
       {
-        withCredentials: true,
+        headers: {
+          ...authHeader(),
+        },
       }
     );
     dispatch(
@@ -179,5 +229,6 @@ export const fetchLeaderboard = () => async (dispatch) => {
     console.error(error);
   }
 };
+
 
 export default userSlice.reducer;
